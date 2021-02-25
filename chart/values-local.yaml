@@ -2,3 +2,6 @@ workshop:
   environment: "MINIKUBE"
   user: "LocalUser"
   other: ""
+
+image:
+  tag: "3.0.3"
