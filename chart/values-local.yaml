@@ -4,4 +4,4 @@ workshop:
   other: ""
 
 image:
-  tag: "3.0.3"
+  tag: "latest"
