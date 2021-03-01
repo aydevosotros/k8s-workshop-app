@@ -14,6 +14,10 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "0.2.3"
 
+promptail:
+  enabled: true
+
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

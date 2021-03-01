@@ -59,6 +59,17 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        {{ if .Values.promptail.enabled }}
+        - name: promptail-container
+          image: grafana/promtail
+          args:
+          - -config.file=/etc/promtail/promtail.yaml
+          volumeMounts:
+{{/*          - name: logs*/}}
+{{/*            mountPath: MOUNT_PATH*/}}
+          - name: promtail-config
+            mountPath: /etc/promtail
+        {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
