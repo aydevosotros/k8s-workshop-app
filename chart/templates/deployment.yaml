@@ -67,12 +67,12 @@ spec:
           volumeMounts:
 {{/*          - name: logs*/}}
 {{/*            mountPath: MOUNT_PATH*/}}
-          - name: promtail-config
+          - name: promtail-config-{{ include "workshop-app.fullname" . }}
             mountPath: /etc/promtail
         {{ end }}
       {{ if .Values.promptail.enabled }}
       volumes:
-        - name: promptail-config
+        - name: promptail-config-{{ include "workshop-app.fullname" . }}
           configMap:
             name: promptail-config-{{ include "workshop-app.fullname" . }}
             items:
