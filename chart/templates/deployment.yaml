@@ -70,6 +70,14 @@ spec:
           - name: promtail-config
             mountPath: /etc/promtail
         {{ end }}
+      {{ if .Values.promptail.enabled }}
+      volumes:
+        - name: promptail-config
+          configMap:
+            name: promptail-config-{{ include "workshop-app.fullname" . }}
+            items:
+              - key: promtail-config.yaml
+      {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
