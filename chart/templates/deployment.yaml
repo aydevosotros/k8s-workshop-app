@@ -63,12 +63,10 @@ spec:
         - name: promptail-container
           image: grafana/promtail
           args:
-          - -config.file=/etc/promtail/promtail.yaml
+            - -config.file=/etc/promtail/promtail.yaml
           volumeMounts:
-{{/*          - name: logs*/}}
-{{/*            mountPath: MOUNT_PATH*/}}
-          - name: promtail-config-{{ include "workshop-app.fullname" . }}
-            mountPath: /etc/promtail
+            - name: promptail-config-{{ include "workshop-app.fullname" . }}
+              mountPath: "/etc/promptail.conf"
         {{ end }}
       {{ if .Values.promptail.enabled }}
       volumes:
