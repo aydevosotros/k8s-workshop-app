@@ -73,9 +73,6 @@ spec:
         - name: promptail-config-{{ include "workshop-app.fullname" . }}
           configMap:
             name: promptail-config-{{ include "workshop-app.fullname" . }}
-            items:
-              - key: promtail-config.yaml
-                path: "promtail-config.yaml"
       {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
