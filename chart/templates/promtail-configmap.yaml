@@ -15,7 +15,7 @@ data:
       filename: /tmp/positions.yaml
 
     clients:
-      - url: http://loki:3100/loki/api/v1/push
+      - url: {{ .Values.promtail.client.host }}:{{ .Values.promtail.client.port }}/loki/api/v1/push
 
     scrape_configs:
     - job_name: system

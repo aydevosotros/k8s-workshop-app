@@ -16,7 +16,9 @@ image:
 
 promtail:
   enabled: true
-
+  client:
+    host: http://loki.loki
+    port: 3100
 
 imagePullSecrets: []
 nameOverride: ""
