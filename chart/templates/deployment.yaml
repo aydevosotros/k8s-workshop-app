@@ -62,8 +62,10 @@ spec:
         {{ if .Values.promptail.enabled }}
         - name: promptail-container
           image: grafana/promtail
-          args:
-            - -config.file=/etc/promtail/promtail.yaml
+          command: [ls]
+          args: [/etc]
+{{/*          args:*/}}
+{{/*            - -config.file=/etc/promtail/promtail.yaml*/}}
           volumeMounts:
             - name: promptail-config-{{ include "workshop-app.fullname" . }}
               mountPath: "/etc/promptail"
