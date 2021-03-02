@@ -59,22 +59,20 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        {{ if .Values.promptail.enabled }}
+        {{ if .Values.promtail.enabled }}
         - name: promptail-container
           image: grafana/promtail
-          command: [ls]
-          args: [/etc]
-{{/*          args:*/}}
-{{/*            - -config.file=/etc/promtail/promtail.yaml*/}}
+          args:
+            - -config.file=/etc/promtail/promtail.yaml
           volumeMounts:
-            - name: promptail-config-{{ include "workshop-app.fullname" . }}
-              mountPath: "/etc/promptail"
+            - name: promtail-config-{{ include "workshop-app.fullname" . }}
+              mountPath: "/etc/promtail"
         {{ end }}
-      {{ if .Values.promptail.enabled }}
+      {{ if .Values.promtail.enabled }}
       volumes:
-        - name: promptail-config-{{ include "workshop-app.fullname" . }}
+        - name: promtail-config-{{ include "workshop-app.fullname" . }}
           configMap:
-            name: promptail-config-{{ include "workshop-app.fullname" . }}
+            name: promtail-config-{{ include "workshop-app.fullname" . }}
       {{ end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
