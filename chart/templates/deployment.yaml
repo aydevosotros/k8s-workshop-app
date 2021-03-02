@@ -63,9 +63,9 @@ spec:
         - name: promptail-container
           image: grafana/promtail
           command:
-            - ls
+            - cat
           args:
-            - /etc/promtail/
+            - /etc/promtail/promtail.yaml
 {{/*          args:*/}}
 {{/*            - -config.file=/etc/promtail/promtail.yaml*/}}
           volumeMounts:
